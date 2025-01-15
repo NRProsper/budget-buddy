@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String        @id @default(uuid())
+  email       String        @unique
+  password    String
+  createAt    DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  accounts    Account[]
+  transaction Transaction[]
+  categories  Category[]
+  budgets     Budget[]
+}
+
+model Account {
+  id           String        @id @default(uuid())
+  userId       String
+  user         User          @relation(fields: [userId], references: [id])
+  name         String
+  type         String // bank, mobile money, cash
+  balance      Float         @default(0)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  transactions Transaction[]
+}
+
+model Transaction {
+  id         String   @id @default(uuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  accountId  String
+  account    Account  @relation(fields: [accountId], references: [id])
+  amount     Float
+  type       String // income, expense
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id])
+  date       DateTime @default(now())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Category {
+  id           String        @id @default(uuid())
+  userId       String
+  user         User          @relation(fields: [userId], references: [id])
+  name         String
+  icon         String // URL or reference to an icon
+  transactions Transaction[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  Budget       Budget[]
+}
+
+model Budget {
+  id         String   @id @default(uuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  amount     Float
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id])
+  startDate  DateTime
+  endDate    DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
