@@ -10,15 +10,8 @@
     "prisma:generate": "prisma generate --schema=./src/db/schema.prisma"
   },
   "dependencies": {
-    "@prisma/client": "^6.2.1",
-    "@types/bcrypt": "^5.0.2",
-    "@types/jsonwebtoken": "^9.0.7",
-    "@types/nodemailer": "^6.4.17",
-    "bcrypt": "^5.1.1",
     "clsx": "^2.1.1",
-    "jsonwebtoken": "^9.0.2",
     "next": "15.1.4",
-    "nodemailer": "^6.9.16",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^2.6.0"
@@ -31,7 +24,6 @@
     "eslint": "^9",
     "eslint-config-next": "15.1.4",
     "postcss": "^8",
-    "prisma": "^6.2.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
