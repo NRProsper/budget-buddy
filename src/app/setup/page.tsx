@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import React, {useState} from "react";
+import {ChevronLeft, ChevronRight} from "lucide-react";
 import ProgressBar from "@/components/ui/progress-bar";
 import AccountCreationStep from "@/components/steps/create-account";
 import TopUpStep from "@/components/steps/top-up";
 import CategorySelection from "@/components/steps/category-selection";
 import WelcomeStep from "@/components/steps/welcome-step";
-import { withAuth } from "@/components/with-auth";
-import { CategoryDto } from "@/types";
-import { useCreateCategory } from "@/hooks/useCategories";
+import {withAuth} from "@/components/with-auth";
+import {CategoryDto} from "@/types";
+import {useCreateCategory} from "@/hooks/useCategories";
 import {toast} from "react-toastify";
 import {useRouter} from "next/navigation";
 
@@ -104,7 +104,7 @@ const SetupPage = () => {
 
             {step !== 0 && (
                 <div className="mb-8">
-                    <ProgressBar step={step} totalSteps={4} />
+                    <ProgressBar step={step} />
                 </div>
             )}
 
@@ -120,7 +120,7 @@ const SetupPage = () => {
                     <AccountCreationStep onSubmit={handleAccountSubmit} />
                 )}
                 {step === 3 && (
-                    <TopUpStep categoryId={accountId} onTopUpComplete={handleTopUpComplete} />
+                    <TopUpStep accountId={accountId} onTopUpComplete={handleTopUpComplete} />
                 )}
             </div>
 

@@ -11,7 +11,7 @@ import {Button} from "@/components/ui/button";
 import {toast} from "react-toastify";
 
 interface TopUpStepProps {
-    categoryId: string;
+    accountId: string;
     onTopUpComplete: () => void;
 }
 
@@ -22,7 +22,7 @@ const topUpSchema = z.object({
 
 type TopUpFormData = z.infer<typeof topUpSchema>;
 
-const TopUpStep = ({ categoryId, onTopUpComplete }: TopUpStepProps) => {
+const TopUpStep = ({ accountId, onTopUpComplete }: TopUpStepProps) => {
     const {
         register,
         handleSubmit,
@@ -32,11 +32,11 @@ const TopUpStep = ({ categoryId, onTopUpComplete }: TopUpStepProps) => {
         resolver: zodResolver(topUpSchema),
     });
 
-    const topUpAccountMutation = useTopUpAccount(categoryId);
+    const topUpAccountMutation = useTopUpAccount(accountId);
 
     const onSubmit = async (data: TopUpFormData) => {
         try {
-            if (!categoryId) {
+            if (!accountId) {
                 throw new Error("Category ID is missing. Please select a category first.");
             }
 
