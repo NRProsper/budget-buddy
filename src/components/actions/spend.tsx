@@ -115,7 +115,7 @@ export default function ExpenseDrawer() {
                                 <SelectContent>
                                     {accounts?.map((account) => (
                                         <SelectItem key={account.id} value={account.id.toString()}>
-                                            {account.type} - ${account.balance.toFixed(2)}
+                                            {account.type} - ${account.balance}
                                         </SelectItem>
                                     ))}
                                 </SelectContent>
