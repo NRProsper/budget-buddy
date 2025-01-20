@@ -2,6 +2,7 @@ import {Poppins} from "next/font/google";
 import "./globals.css";
 import {baseUrl, ensureStartsWith} from "@/lib/utils";
 import {Metadata} from "next";
+import ParentWrappers from "@/components/ParentWrappers";
 
 const poppins = Poppins({
     subsets: ['latin'],
@@ -63,7 +64,16 @@ export default function RootLayout({
       <body
         className={` ${poppins.className} antialiased bg-white dark:bg-red-300`}
       >
-        {children}
+      <ParentWrappers>
+          <div className="bg-gray-200 dark:bg-gray-900 min-h-screen relative overflow-hidden h-screen">
+              <div
+                  className="sm:max-w-lg mx-auto bg-white dark:bg-black px-5 flex justify-center items-center relative min-h-screen ">
+                  <div className="w-full flex flex-col gap-10 h-screen pt-10 p-5 overflow-y-scroll overflow-x-hidden">
+                      {children}
+                  </div>
+              </div>
+          </div>
+      </ParentWrappers>
       </body>
     </html>
   );
