@@ -2,16 +2,11 @@
 
 import Link from "next/link";
 import React from "react";
-import { Home, PieChart, Wallet } from "lucide-react";
-import { usePathname, useRouter } from "next/navigation";
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useAuth } from "@/context/AuthContext";
+import {Home, PieChart} from "lucide-react";
+import {usePathname, useRouter} from "next/navigation";
+import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu";
+import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
+import {useAuth} from "@/context/AuthContext";
 import ExpenseDrawer from "@/components/actions/spend";
 
 export default function Layout({ children }: { children: React.ReactNode }) {

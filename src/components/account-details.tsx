@@ -4,7 +4,7 @@ import {useStatistics} from "@/hooks/useAccounts";
 import {Skeleton} from "@/components/ui/skeleton";
 import {Alert, AlertDescription} from "@/components/ui/alert";
 
-export default function({accountId}: {accountId: string }) {
+export default function AccountDetails({accountId}: {accountId: string }) {
 
     const { data: statistics, isPending, error } = useStatistics(accountId);
 

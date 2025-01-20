@@ -2,11 +2,9 @@
 
 import {useTransactions} from "@/hooks/useTransactions";
 import {format} from "date-fns";
-import {useState} from "react";
 import Pagination from "@/components/pagination";
 
 export default function AccountTransactions({ accountId }: { accountId: string }) {
-    const [page, setPage] = useState(1);
     const { data: transactionsResponse, isPending, error } = useTransactions(accountId);
 
     if (isPending) {

@@ -18,7 +18,7 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {toast} from "react-toastify";
 import {useAccounts, useTopUpAccount} from "@/hooks/useAccounts";
 import {z} from "zod";
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue,} from "@/components/ui/select";
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
 
 
 const topUpSchema = z.object({

@@ -1,4 +1,4 @@
-import {LoginRequest, LoginResponse, RegisterRequest, SafeUser, User} from "@/types";
+import {LoginRequest, LoginResponse, RegisterRequest, SafeUser} from "@/types";
 import API from "@/lib/axios";
 import {AxiosError, AxiosResponse} from "axios";
 

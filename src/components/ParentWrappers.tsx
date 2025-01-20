@@ -7,7 +7,7 @@ import {ToastContainer} from "react-toastify";
 
 const queryClient = new QueryClient();
 
-export default function ({children}:{children: ReactNode}) {
+export default function ParentWrappers({children}:{children: ReactNode}) {
     return(
         <QueryClientProvider client={queryClient}>
             <AuthProvider>

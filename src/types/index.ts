@@ -36,7 +36,7 @@ export type Account = {
 }
 
 export type CreateAccount = {
-    type: String,
+    type: string,
     balance: number
 }
 
