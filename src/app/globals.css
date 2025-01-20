@@ -4,21 +4,21 @@
 
 
 ::-webkit-scrollbar {
-    width: 4px;
+   display: none;
 }
 
-::-webkit-scrollbar-track {
-    background: transparent;
-}
+/*::-webkit-scrollbar-track {*/
+/*    background: transparent;*/
+/*}*/
 
-::-webkit-scrollbar-thumb {
-    background: #69a4ff;
-    border-radius: 4px;
-}
+/*::-webkit-scrollbar-thumb {*/
+/*    background: #69a4ff;*/
+/*    border-radius: 4px;*/
+/*}*/
 
-::-webkit-scrollbar-thumb:hover {
-    background: #2563eb;
-}
+/*::-webkit-scrollbar-thumb:hover {*/
+/*    background: #2563eb;*/
+/*}*/
 
 
 @layer base {
