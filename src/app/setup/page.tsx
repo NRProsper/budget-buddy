@@ -119,7 +119,7 @@ const SetupPage = () => {
                 {step === 2 && (
                     <AccountCreationStep onSubmit={handleAccountSubmit} />
                 )}
-                {step === 3 && (
+                {step === 3 && accountId && (
                     <TopUpStep accountId={accountId} onTopUpComplete={handleTopUpComplete} />
                 )}
             </div>
