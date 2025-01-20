@@ -31,7 +31,6 @@ const Dashboard = () => {
                                   accounts.length % 2 !== 0 && idx === accounts.length - 1 ? "col-span-2" : ""
                               }`}>
                             <h1 className="font-bold mb-2">{account.type}</h1>
-                            <h2 className="text-xl font-semibold">{account.name}</h2>
                             <p className="text-gray-600">Balance: {account.balance.toFixed(2)}</p>
                         </Link>
                     ))}
