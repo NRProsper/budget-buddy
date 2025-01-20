@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useForm} from "react-hook-form";
@@ -9,6 +9,7 @@ import {Input} from "@/components/ui/input";
 import {useLogin} from "@/hooks/useAuthApi";
 import {useRouter} from "next/navigation";
 import Link from "next/link";
+import {Loader2} from "lucide-react";
 
 const formSchema = z.object({
     email: z.string().email("Invalid email address").min(1, "Email is required"),
@@ -16,8 +17,7 @@ const formSchema = z.object({
 });
 
 export default function Login() {
-
-    const {mutate, isPending} = useLogin();
+    const { mutate, isPending } = useLogin();
     const navigate = useRouter();
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -29,13 +29,15 @@ export default function Login() {
     });
 
     const onSubmit = (values: z.infer<typeof formSchema>) => {
-        mutate(values)
+        mutate(values);
     };
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen">
             <div className="w-full">
-                <h1 className="text-4xl font-bold text-center mb-6 text-blue-600">Login</h1>
+                <h1 className="text-4xl font-bold text-center mb-6 text-blue-600">
+                    Login
+                </h1>
                 <p className="text-sm text-gray-600 text-center mb-6">
                     Login to have access to your account.
                 </p>
@@ -73,11 +75,28 @@ export default function Login() {
                             )}
                         />
 
-                        <Button type="submit" size="lg" className="w-full">
-                            Login
+                        <Button
+                            type="submit"
+                            size="lg"
+                            className="w-full"
+                            disabled={isPending}
+                        >
+                            {isPending ? (
+                                <>
+                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                    Logging in...
+                                </>
+                            ) : (
+                                "Login"
+                            )}
                         </Button>
 
-                        <Link href="/sign-up" className="block text-sm text-center hover:underline text-gray-500 mt-4">Don't have account? Sign up</Link>
+                        <Link
+                            href="/sign-up"
+                            className="block text-sm text-center hover:underline text-gray-500 mt-4"
+                        >
+                            Don't have an account? Sign up
+                        </Link>
                     </form>
                 </Form>
             </div>

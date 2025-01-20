@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { useCreateAccount } from "@/hooks/useAccounts";
 import { toast } from "react-toastify";
+import {Loader2} from "lucide-react";
 
 const accountSchema = z.object({
     type: z.string().min(1, "Account type is required"),
@@ -102,7 +103,14 @@ const AccountCreationStep = ({ onSubmit }: AccountCreationStepProps) => {
                     )}
                 </div>
                 <Button type="submit" className="w-full" disabled={createAccountMutation.isPending}>
-                    {createAccountMutation.isPending ? "Creating Account..." : "Create Account"}
+                    {createAccountMutation.isPending ? (
+                        <>
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            Creating account...
+                        </>
+                    ) : (
+                        "Create Account"
+                    )}
                 </Button>
             </form>
         </>

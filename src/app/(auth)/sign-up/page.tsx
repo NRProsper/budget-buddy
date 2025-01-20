@@ -10,6 +10,7 @@ import {useRouter} from "next/navigation";
 import Link from "next/link";
 import {useRegister} from "@/hooks/useAuthApi";
 import {toast} from "react-toastify";
+import {Loader2} from "lucide-react";
 
 
 const formSchema = z.object({
@@ -140,8 +141,20 @@ export default function Register() {
                             )}
                         />
 
-                        <Button type="submit" size="lg" className="w-full" disabled={isPending}>
-                            Create account
+                        <Button
+                            type="submit"
+                            size="lg"
+                            className="w-full"
+                            disabled={isPending}
+                        >
+                            {isPending ? (
+                                <>
+                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                    Registering...
+                                </>
+                            ) : (
+                                "Create Account"
+                            )}
                         </Button>
 
                         <Link href="/login" className="block text-sm text-center hover:underline text-gray-500 mt-4">Have account? Login</Link>
