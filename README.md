@@ -2,7 +2,7 @@
 
 Budget Buddy is a full-stack budget management application built with **Next.js** for the frontend and a hosted backend. It allows users to create accounts, manage transactions, and track expenses seamlessly. Whether it's a bank account, mobile money account, or savings account, Budget Buddy helps users stay on top of their finances.
 
-![Budget Buddy Screenshot](https://via.placeholder.com/800x400) <!-- Add a screenshot of your app here -->
+
 
 ---
 
