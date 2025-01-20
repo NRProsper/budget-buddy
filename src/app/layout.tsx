@@ -67,7 +67,7 @@ export default function RootLayout({
       <ParentWrappers>
           <div className="bg-gray-200 dark:bg-gray-900 min-h-screen relative overflow-hidden h-screen">
               <div
-                  className="sm:max-w-lg mx-auto bg-white dark:bg-black px-5 flex justify-center items-center relative min-h-screen ">
+                  className="sm:max-w-lg mx-auto bg-white dark:bg-black sm:px-5 flex justify-center items-center relative min-h-screen ">
                   <div className="w-full flex flex-col gap-10 h-screen pt-10 p-5 overflow-y-scroll overflow-x-hidden">
                       {children}
                   </div>

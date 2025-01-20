@@ -32,7 +32,7 @@ export default function AccountDetails({accountId}: {accountId: string }) {
     return (
         <div className="space-y-4">
             <h2 className="text-2xl font-semibold capitalize">{statistics?.account.type} Statistics</h2>
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div className="bg-blue-100 border border-blue-400 rounded-md px-5 py-2">
                     <h4 className="text-2xl font-semibold">Balance</h4>
                     <h6>{statistics?.account.balance}</h6>
