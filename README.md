@@ -40,6 +40,16 @@ Budget Buddy is a full-stack budget management application built with **Next.js*
 Check out the live version of Budget Buddy:  
 👉 [https://budget-buddy-azure-eight.vercel.app/](https://budget-buddy-azure-eight.vercel.app/)
 
+You are free to create your account, if you want to test its functionalities without creating your account use this credentials:
+
+```json
+{
+  "email": "prosper.rk1@gmail.com",
+  "password": "mine123@#"
+}
+
+```
+
 ---
 
 ## Technologies Used
@@ -77,7 +87,7 @@ Before running the project locally, ensure you have the following installed:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/budget-buddy.git
+   https://github.com/NRProsper/budget-buddy.git
    cd budget-buddy
 
 2. **Install dependencies:**
