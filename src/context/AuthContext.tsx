@@ -1,7 +1,7 @@
-import {SafeUser} from "@/types";
-import {createContext, ReactNode, useContext, useEffect, useState} from "react";
-import {useAccounts} from "@/hooks/useAccounts";
-import {useRouter} from "next/navigation";
+import { SafeUser } from "@/types";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import { useAccounts } from "@/hooks/useAccounts";
+import { useRouter } from "next/navigation";
 
 interface AuthContextType {
     isAuthenticated: boolean;
@@ -13,14 +13,12 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider = ({children} : {children: ReactNode}) => {
-
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [user, setUser] = useState<SafeUser | null>(null);
     const [token, setToken] = useState<string | null>(null);
     const { data: accounts } = useAccounts();
     const router = useRouter();
-
 
     useEffect(() => {
         const storedToken = localStorage.getItem('token');
@@ -31,8 +29,16 @@ export const AuthProvider = ({children} : {children: ReactNode}) => {
             setToken(storedToken);
             setUser(JSON.parse(storedUser));
 
+
             if (accounts && accounts.length === 0) {
                 router.push("/setup");
+            } else {
+                const currentPath = window.location.pathname;
+                if (currentPath === "/login" || currentPath === "/setup") {
+                    router.push("/dashboard");
+                } else {
+                    router.push(currentPath);
+                }
             }
         }
     }, [accounts, router]);
@@ -45,13 +51,13 @@ export const AuthProvider = ({children} : {children: ReactNode}) => {
         setUser(user);
     };
 
-
     const logout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         setIsAuthenticated(false);
         setToken(null);
         setUser(null);
+        router.push("/login");
     };
 
     return (
@@ -59,8 +65,7 @@ export const AuthProvider = ({children} : {children: ReactNode}) => {
             {children}
         </AuthContext.Provider>
     );
-
-}
+};
 
 export const useAuth = () => {
     const context = useContext(AuthContext);
