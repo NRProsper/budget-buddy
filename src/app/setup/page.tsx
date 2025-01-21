@@ -76,6 +76,8 @@ const SetupPage = () => {
         } catch (error) {
             toast.error("An error occurred during setup. Please try again.");
             console.error("Setup Error:", error);
+        } finally {
+            router.push("/dashboard");
         }
     };
 

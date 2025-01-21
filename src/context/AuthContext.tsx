@@ -2,6 +2,7 @@ import { SafeUser } from "@/types";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { useAccounts } from "@/hooks/useAccounts";
 import { useRouter } from "next/navigation";
+import {useCategories} from "@/hooks/useCategories";
 
 interface AuthContextType {
     isAuthenticated: boolean;
@@ -18,6 +19,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [user, setUser] = useState<SafeUser | null>(null);
     const [token, setToken] = useState<string | null>(null);
     const { data: accounts } = useAccounts();
+    const { data: categories } = useCategories();
     const router = useRouter();
 
     useEffect(() => {
@@ -29,11 +31,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             setToken(storedToken);
             setUser(JSON.parse(storedUser));
 
+            const currentPath = window.location.pathname;
+            if (currentPath === "/setup") {
+                return;
+            }
 
-            if (accounts && accounts.length === 0) {
+
+            if ((accounts && accounts.length === 0) || (categories && categories.length === 0)) {
                 router.push("/setup");
             } else {
-                const currentPath = window.location.pathname;
                 if (currentPath === "/login" || currentPath === "/setup") {
                     router.push("/dashboard");
                 } else {
